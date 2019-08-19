@@ -15,8 +15,9 @@ public class UserDataChangeController {
     private UserServiceImpl service;
 
     @RequestMapping("/deleteuser")
-    public String deleteUser(int id){
-        if(service.deleteUser(id)){
+    public String deleteUser(int idDelete, Model model){
+        if(service.deleteUser(idDelete)){
+            model.addAttribute("usersKey", service.getUsers());
             return "admin/users";
         }
         else{
@@ -25,8 +26,8 @@ public class UserDataChangeController {
     }
 
     @RequestMapping(value = "/updateuser", method = GET)
-    public String getUpdateUserForm(int id, Model model){
-        model.addAttribute("userKey", service.getUserById(id));
+    public String getUpdateUserForm(int idChange, Model model){
+        model.addAttribute("userKey", service.getUserById(idChange));
         return "admin/datachange";
     }
     @RequestMapping(value = "updateuser", method = POST)

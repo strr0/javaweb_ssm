@@ -16,7 +16,7 @@
 <div class="box">
     <div class="blank"></div>
     <div style="float: right; margin-right: 10px;">
-        <a href="">注销</a>
+        <a href="logout">注销</a>
     </div>
     <c:set var="users" value="${usersKey}"></c:set>
     <c:set var="adminName" value="${sessionScope.nameKey}"></c:set>
@@ -66,7 +66,7 @@
             暂无用户注册
         </c:if>
     </div>
-    <div style="margin-left: 10px;"><a href="">留言板</a></div>
+    <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
     <div class="blank"></div>
 </div>
 </body>

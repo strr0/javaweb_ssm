@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
     public boolean updateUser(UserForm userForm){
         if(userForm != null){
-            User user = mapper.getUserById(userForm.getId());
+            User user = mapper.getUserByName(userForm.getName());
             if(userForm.getSex() != null){
                 user.setSex(userForm.getSex());
             }

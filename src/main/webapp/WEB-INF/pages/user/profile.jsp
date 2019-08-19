@@ -18,7 +18,7 @@
     <div style="float: right; margin-right: 10px;">
         <c:set var="login" value="${sessionScope.nameKey}"></c:set>
         <c:if test="${!empty login}" var="flag">
-            ${login} <a href="LogoutServlet">注销</a>
+            ${login} <a href="logout">注销</a>
         </c:if>
         <c:if test="${not flag}">
             未登录
@@ -57,7 +57,7 @@
         </c:if>
     </div>
     <div class="blank"></div>
-    <div style="margin-left: 10px;"><a href="MessageBoardServlet">留言板</a></div>
+    <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
     <div class="blank"></div>
 </div>
 <script src="resources/js/dataCheck.js"></script>

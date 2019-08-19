@@ -73,7 +73,7 @@
                 <input type="submit" class="bt1" value="注册" />
             </div>
             <div class="input_field">
-                <input type="button" class="bt1" onclick="window.location.href='RegisterServlet'" value="取消" />
+                <input type="button" class="bt1" onclick="window.location.href='login'" value="取消" />
             </div>
         </div>
     </form>

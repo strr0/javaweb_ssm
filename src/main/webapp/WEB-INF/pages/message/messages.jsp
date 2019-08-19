@@ -28,7 +28,7 @@
         <div><font size="5">留言板</font></div>
         <div class="blank"></div>
         <c:set var="messages" value="${messagesKey}"></c:set>
-        <c:set var="admin" value="${sessionScope.adminKey}"></c:set>
+        <c:set var="admin" value="${sessionScope.admin}"></c:set>
         <c:if test="${!empty messages}" var="flag">
             <c:forEach var="message" items="${messages}">
                 <div class="board_wrap">
@@ -38,7 +38,7 @@
                     </div>
                     <c:if test="${!empty admin}">
                         <div style="float: left;">
-                            <button class="bt_delete" onclick="location.href='MessageBoardDeleteServlet?id=${message.mId}'">删除</button>
+                            <button class="bt_delete" onclick="location.href='deletemessage?id=${message.mId}'">删除</button>
                         </div>
                     </c:if>
                 </div>
@@ -49,7 +49,7 @@
         </c:if>
         <div class="blank"></div>
         <div>
-            <form action="MessageBoardServlet" method="post" id="messages">
+            <form action="addmessage" method="post" id="messages">
                 <textarea form="messages" name="data"></textarea>
                 <input type="submit" value="提交">
             </form>

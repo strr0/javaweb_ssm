@@ -16,13 +16,14 @@
 <div class="box">
     <c:set var="user" value="${userKey}"></c:set>
     <div class="blank"></div>
-    <div class="home_bt"><a href="index.jsp">返回</a></div>
+    <div class="home_bt"><a href="home">返回</a></div>
     <form action="updateuser" method="post" id="change_form" onsubmit="return changeCheck()">
         <div class="input_item">
             <font size="5">修改信息</font>
         </div>
         <c:if test="${!empty user}">
             <input type="hidden" name="id" value="${user.id}"/>
+            <input type="hidden" name="admin" value="${user.admin}">
             <div class="input_item">
                 <div class="input_field">用户名: </div>
                 <div class="input_field">
@@ -42,6 +43,16 @@
                     <input type="text" name="age" id="age" onblur="isAge(this.value)" value="${user.age}" />
                 </div>
                 <div class="input_error" id="age_error"></div>
+            </div>
+            <div class="input_item">
+                <div class="input_field">密码：</div>
+                <div class="input_field"><input type="password" id="pwd" name="password" onblur="isPassword(this.value)" value="${user.password}" /></div>
+                <div class="input_error" id="password_error"></div>
+            </div>
+            <div class="input_item">
+                <div class="input_field">确认密码：</div>
+                <div class="input_field"><input type="password" id="comfirm_pwd" name="comfirmpwd" onblur="isComfirmPWD(this.value)" value="${user.password}" /></div>
+                <div class="input_error" id="comfirm_pwd_error"></div>
             </div>
             <div class="input_item">
                 <div class="input_field">爱好：</div>
