@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
     public boolean updateUser(UserForm userForm){
         if(userForm != null){
-            User user = mapper.getUserByName(userForm.getName());
+            User user = mapper.getUserByName(userForm.getUsername());
             if(userForm.getSex() != null){
                 user.setSex(userForm.getSex());
             }
@@ -57,13 +57,13 @@ public class UserServiceImpl implements UserService {
     public List<User> getUsers(){
         return mapper.selectUsers();
     }
-    public User getUserByName(String name){
-        return mapper.getUserByName(name);
+    public User getUserByName(String username){
+        return mapper.getUserByName(username);
     }
     public User getUserById(int id){
         return mapper.getUserById(id);
     }
-    public User matchUser(String name, String password){
-        return mapper.matchUser(name, password);
+    public User matchUser(String username, String password){
+        return mapper.matchUser(username, password);
     }
 }
