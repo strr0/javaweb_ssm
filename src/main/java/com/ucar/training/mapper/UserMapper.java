@@ -9,7 +9,7 @@ public interface UserMapper {
     void deleteUser(int id);
     void updateUser(User user);
     List<User> selectUsers();
-    User getUserByName(String name);
+    User getUserByName(String username);
     User getUserById(int id);
-    User matchUser(String name, String password);
+    User matchUser(String username, String password);
 }
