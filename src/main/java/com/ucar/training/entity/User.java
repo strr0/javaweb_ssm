@@ -2,7 +2,7 @@ package com.ucar.training.entity;
 
 public class User {
     private int id;
-    private String name;
+    private String username;
     private String sex;
     private int age;
     private String password;
@@ -11,9 +11,9 @@ public class User {
     private int admin;  // 0为普通用户 1为管理员
 
     public User(){}
-    public User(int id, String name, String sex, int age, String password, String likes, String tag, int admin){
+    public User(int id, String username, String sex, int age, String password, String likes, String tag, int admin){
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.sex = sex;
         this.age = age;
         this.password = password;
@@ -21,19 +21,19 @@ public class User {
         this.tag = tag;
         this.admin = admin;
     }
-    public User(String name, String sex, int age, String password, String likes, String tag, int admin){
-        this(-1, name, sex, age, password, likes, tag, admin);
+    public User(String username, String sex, int age, String password, String likes, String tag, int admin){
+        this(-1, username, sex, age, password, likes, tag, admin);
     }
 
     public int getId() {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
     public void setSex(String sex) {
         this.sex = sex;
