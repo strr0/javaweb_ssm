@@ -8,13 +8,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <meta charset="utf-8">
+    <%--<meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
-    <title></title>
+    <title></title>--%>
 </head>
 <body>
 
-<div class="box">
+<%--<div class="box">--%>
     <div class="blank"></div>
     <div style="float: right; margin-right: 10px;"><a href="home">返回</a></div>
     <form method="post" id="register_form" onsubmit="return formCheck()">
@@ -25,7 +25,7 @@
         </div>
         <div class="input_item">
             <div class="input_field">用户名：</div>
-            <div class="input_field"><input type="text" id="name" name="name" onblur="isName(this.value)" placeholder="请输入用户名" autocomplete="off" /></div>
+            <div class="input_field"><input type="text" id="name" name="username" onblur="isName(this.value)" placeholder="请输入用户名" autocomplete="off" /></div>
             <div class="input_error" id="name_error"></div>
         </div>
 
@@ -78,9 +78,9 @@
         </div>
     </form>
     <div class="blank"></div>
-</div>
+<%--</div>--%>
 
-<script src="resources/js/script.js"></script>
+<%--<script src="resources/js/script.js"></script>--%>
 </body>
 </html>
 
