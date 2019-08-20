@@ -5,7 +5,7 @@
 <mapper namespace="com.ucar.training.mapper.UserMapper">
     <!-- 增 -->
     <insert id="insertUser" parameterType="com.ucar.training.entity.User">
-        insert into user(name, sex, age, password, likes, tag, admin) values(#{name}, #{sex}, #{age}, #{password}, #{likes}, #{tag}, #{admin})
+        insert into user(username, sex, age, password, likes, tag, admin) values(#{username}, #{sex}, #{age}, #{password}, #{likes}, #{tag}, #{admin})
     </insert>
     <!-- 删 -->
     <delete id="deleteUser" parameterType="int">
@@ -17,11 +17,11 @@
     </select>
     <!-- 改 -->
     <update id="updateUser" parameterType="com.ucar.training.entity.User">
-        update user set name = #{name}, sex = #{sex}, age = #{age}, likes = #{likes}, tag = #{tag} where id = #{id}
+        update user set username = #{username}, sex = #{sex}, age = #{age}, likes = #{likes}, tag = #{tag} where id = #{id}
     </update>
     <!-- 根据用户名返回用户信息 -->
     <select id="getUserByName" resultType="com.ucar.training.entity.User">
-        select * from user where name = #{name}
+        select * from user where username = #{username}
     </select>
     <!-- 根据用户id返回用户信息 -->
     <select id="getUserById" resultType="com.ucar.training.entity.User">
@@ -29,6 +29,6 @@
     </select>
     <!-- 匹配用户名和密码 -->
     <select id="matchUser" resultType="com.ucar.training.entity.User">
-        select * from user where name = #{arg0} and password = #{arg1}
+        select * from user where username = #{arg0} and password = #{arg1}
     </select>
 </mapper>
