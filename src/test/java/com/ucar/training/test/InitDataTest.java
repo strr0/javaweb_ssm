@@ -11,8 +11,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class InitDataTest {
-    //@Test
-    public void initUserTest(){
+    public void initTest(String url){
         Connection connection = null;
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,7 +20,7 @@ public class InitDataTest {
                     "root",
                     "password");
             ScriptRunner runner = new ScriptRunner(connection);
-            Reader reader = Resources.getResourceAsReader("data/init_user.sql");
+            Reader reader = Resources.getResourceAsReader(url);
             runner.runScript(reader);
             runner.closeConnection();
             System.out.println("初始化成功");
@@ -47,39 +46,39 @@ public class InitDataTest {
         }
     }
 
+    //初始化user表
+    //@Test
+    public void initUserTest(){
+        initTest("data/init_user.sql");
+    }
+
     //初始化message表
     //@Test
     public void initMessageTest(){
-        Connection connection = null;
-        try{
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/sampledb?useSSL=false&serverTimezone=UTC",
-                    "root",
-                    "password");
-            ScriptRunner runner = new ScriptRunner(connection);
-            Reader reader = Resources.getResourceAsReader("data/init_message.sql");
-            runner.runScript(reader);
-            runner.closeConnection();
-        }
-        catch (ClassNotFoundException c){
-            System.out.println("class not found!");
-        }
-        catch (SQLException s){
-            System.out.println("get connection error!");
-        }
-        catch (IOException i){
-            System.out.println("get resource error!");
-        }
-        finally {
-            if(connection != null){
-                try{
-                    connection.close();
-                }
-                catch (SQLException s){
-                    System.out.println("close connection error!");
-                }
-            }
-        }
+        initTest("data/init_message.sql");
+    }
+
+    //初始化role表
+    //@Test
+    public void initRoleTest(){
+        initTest("data/init_role.sql");
+    }
+
+    //初始化permission表
+    //@Test
+    public void initPermissionTest(){
+        initTest("data/init_permission.sql");
+    }
+
+    //初始化role_permission表
+    //@Test
+    public void initRolePermissionTest(){
+        initTest("data/init_role_permission.sql");
+    }
+
+    //初始化user_role表
+    //@Test
+    public void initUserRoleTest(){
+        initTest("data/init_user_role.sql");
     }
 }
