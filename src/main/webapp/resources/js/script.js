@@ -293,7 +293,23 @@ function resetLabel(){
 }
 
 /* 插入页面 */
-function insertLoginPage(){
+function insertPage(url){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+}
+/*function insertLoginPage(){
     var xmlhttp;
     if(window.XMLHttpRequest){
         xmlhttp = new XMLHttpRequest();
@@ -325,6 +341,38 @@ function insertRegisterPage(){
     xmlhttp.open("GET", "register", true);
     xmlhttp.send();
 }
+function insertProfilePage(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "profile", true);
+    xmlhttp.send();
+}
+function insertUsersPage(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "users", true);
+    xmlhttp.send();
+}
 function insertMessagePage(){
     var xmlhttp;
     if(window.XMLHttpRequest){
@@ -340,4 +388,4 @@ function insertMessagePage(){
     }
     xmlhttp.open("GET", "messages", true);
     xmlhttp.send();
-}
+}*/

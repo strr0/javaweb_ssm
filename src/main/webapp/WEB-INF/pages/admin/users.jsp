@@ -9,11 +9,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+<%--    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />--%>
 </head>
 <body>
-<div class="box">
+<%--<div class="box">--%>
     <div class="blank"></div>
     <div style="float: right; margin-right: 10px;">
         <a href="logout">注销</a>
@@ -66,9 +66,9 @@
             暂无用户注册
         </c:if>
     </div>
-    <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
-    <div class="blank"></div>
-</div>
+<%--    <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
+    <div class="blank"></div>--%>
+<%--</div>--%>
 </body>
 </html>
 

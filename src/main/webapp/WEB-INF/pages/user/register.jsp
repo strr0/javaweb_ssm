@@ -16,7 +16,7 @@
 
 <%--<div class="box">--%>
     <div class="blank"></div>
-    <div style="float: right; margin-right: 10px;"><a href="home">返回</a></div>
+    <div style="float: right; margin-right: 10px;"><a href="main">返回</a></div>
     <form method="post" id="register_form" onsubmit="return formCheck()">
         <div class="input_item">
             <font size="5" id="admin">注册用户</font>

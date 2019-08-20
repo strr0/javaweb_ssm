@@ -18,7 +18,7 @@
     <div style="float: right; margin-right: 10px;">
         <c:set var="login" value="${sessionScope.nameKey}"></c:set>
         <c:if test="${!empty login}" var="flag">
-            ${login} <a href="LogoutServlet">注销</a>
+            ${login} <a href="logout">注销</a>
         </c:if>
         <c:if test="${not flag}">
             <p onclick="location.href='LoginServlet'">未登录</p>
@@ -55,7 +55,7 @@
             </form>
         </div>
     </div>
-    <div class="blank"></div>
+<%--    <div class="blank"></div>--%>
 <%--</div>--%>
 </body>
 </html>

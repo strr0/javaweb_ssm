@@ -9,11 +9,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+    <%--<title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />--%>
 </head>
 <body>
-<div class="box">
+<%--<div class="box">--%>
     <div class="blank"></div>
     <div style="float: right; margin-right: 10px;">
         <c:set var="login" value="${sessionScope.nameKey}"></c:set>
@@ -56,11 +56,11 @@
             </div>
         </c:if>
     </div>
-    <div class="blank"></div>
+    <%--<div class="blank"></div>
     <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
-    <div class="blank"></div>
-</div>
-<script src="resources/js/dataCheck.js"></script>
+    <div class="blank"></div>--%>
+<%--</div>--%>
+<%--<script src="resources/js/dataCheck.js"></script>--%>
 </body>
 </html>
 

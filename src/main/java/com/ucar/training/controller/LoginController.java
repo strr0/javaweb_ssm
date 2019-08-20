@@ -39,13 +39,13 @@ public class LoginController {
         User user = service.matchUser(username, password);
         if(user != null){
             session.setAttribute("nameKey", user.getUsername());
-            if(user.getAdmin() == 1){
+            /*if(user.getAdmin() == 1){
                 model.addAttribute("usersKey", service.getUsers());
                 session.setAttribute("admin", 1);
-            }
-            else{
+            }*/
+            /*else{
                 model.addAttribute("userKey", user);
-            }
+            }*/
             return "wrap/main";
         }
         else{
@@ -54,8 +54,9 @@ public class LoginController {
         }
     }
     @RequestMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session, Model model){
         session.invalidate();
-        return "home";
+        model.addAttribute("message", "注销成功");
+        return "wrap/main";
     }
 }

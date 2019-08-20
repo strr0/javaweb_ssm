@@ -15,7 +15,7 @@
 <body>
 <%--<div class="box">--%>
     <div class="blank"></div>
-    <div class="home_bt"><a href="home">返回</a></div>
+    <div class="home_bt"><a href="main">返回</a></div>
     <form action="login" method="post">
         <div class="input_item">
             <font size="5">登录用户</font>
