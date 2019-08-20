@@ -34,7 +34,7 @@
                 <table>
                     <tr>
                         <td>用户名: </td>
-                        <td>${user.name}</td>
+                        <td>${user.username}</td>
                     </tr>
                     <tr>
                         <td>性别: </td>
