@@ -1,6 +1,33 @@
 body{
     background-color: gray;
 }
+.main_wrap{
+    width: 700px;
+    height: 500px;
+    background-color: #DDEEFF;
+    overflow: hidden;
+    margin: auto;
+}
+.main_label{
+    width: 150px;
+    height: 500px;
+    float: left
+}
+.main_box{
+    width: 550px;
+    height: 500px;
+    background-color: lavenderblush;
+    float: right;
+    overflow-y: scroll;
+}
+
+.label_select{
+    width: 120px;
+    margin: 5px;
+    padding: 10px;
+    background-color: #EEEEEE; /* #AAAACC */
+}
+
 .box{
     width: 550px;
     background-color: lavenderblush;
