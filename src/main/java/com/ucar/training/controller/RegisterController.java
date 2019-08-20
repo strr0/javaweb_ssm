@@ -20,7 +20,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = POST)
     public String postRegisterForm(UserForm userForm){
-        if(service.getUserByName(userForm.getName()) != null){
+        if(service.getUserByName(userForm.getUsername()) != null){
             return "status/fail";
         }
         else{
