@@ -9,4 +9,9 @@ public class HomeController {
     public String getHome(){
         return "home";
     }
+
+    @RequestMapping("/main")
+    public String getMain(){
+        return "wrap/main";
+    }
 }
