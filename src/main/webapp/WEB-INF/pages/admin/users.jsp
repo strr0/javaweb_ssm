@@ -38,7 +38,7 @@
                 </tr>
                 <c:forEach var="user" items="${users}">
                     <tr>
-                        <td><c:out value="${user.name}"></c:out></td>
+                        <td><c:out value="${user.username}"></c:out></td>
                         <td><c:out value="${user.sex}"></c:out></td>
                         <td><c:out value="${user.age}"></c:out></td>
                         <td><c:out value="${user.likes}"></c:out></td>
