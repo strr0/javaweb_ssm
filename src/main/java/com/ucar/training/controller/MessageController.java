@@ -23,12 +23,12 @@ public class MessageController {
     }
     @RequestMapping(value = "/addmessage", method = POST)
     public String addMessage(String data, HttpSession session){
-        String name = (String)session.getAttribute("nameKey");
-        if(name == null){
+        String username = (String)session.getAttribute("nameKey");
+        if(username == null){
             return "redirect:login";
         }
         else{
-            Message message = new Message(name, data);
+            Message message = new Message(username, data);
             service.addMessge(message);
             return "redirect:messages";
         }
