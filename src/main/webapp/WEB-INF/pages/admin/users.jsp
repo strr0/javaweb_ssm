@@ -33,7 +33,7 @@
                     <th style="width: 100px;">年龄</th>
                     <th style="width: 120px;">爱好</th>
                     <th style="width: 80px;">
-                        <button class="bt_user_add" onclick="location.href='register'">添加用户</button>
+                        <button class="bt_user_add" onclick="insertPage('register')">添加用户</button>
                     </th>
                 </tr>
                 <c:forEach var="user" items="${users}">
@@ -45,16 +45,10 @@
                         <td>
                             <div style="overflow: hidden; width: 80px;">
                                 <div style="float: left; width: 40px;">
-                                    <form action="updateuser" method="get" style="margin: 0;">
-                                        <input type="hidden" name="idChange" value="${user.id}" />
-                                        <input type="submit" class="bt_user_change" value="修改" />
-                                    </form>
+                                    <button class="bt_user_change" onclick="updateUser('${user.id}')">修改</button>
                                 </div>
                                 <div style="float: left; width: 40px;">
-                                    <form action="deleteuser" method="post" style="margin: 0;">
-                                        <input type="hidden" name="idDelete" value="${user.id}" />
-                                        <input type="submit" class="bt_user_delete" value="删除" />
-                                    </form>
+                                    <button class="bt_user_delete" onclick="deleteUser('${user.id}')">删除</button>
                                 </div>
                             </div>
                         </td>

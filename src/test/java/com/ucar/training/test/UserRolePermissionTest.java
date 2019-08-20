@@ -2,6 +2,7 @@ package com.ucar.training.test;
 
 import static org.junit.Assert.*;
 import com.ucar.training.config.DataConfig;
+import com.ucar.training.mapper.RoleMapper;
 import com.ucar.training.mapper.UserRolePermissionMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +16,10 @@ import java.util.List;
 @ContextConfiguration(classes = DataConfig.class)
 public class UserRolePermissionTest {
     @Resource
-    UserRolePermissionMapper mapper;
+    private UserRolePermissionMapper mapper;
+
+    @Resource
+    private RoleMapper roleMapper;
 
     @Test
     public void getPermissionTest(){
@@ -25,6 +29,15 @@ public class UserRolePermissionTest {
 
         for(String permission : permissions){
             System.out.println(permission);
+        }
+    }
+
+    @Test
+    public void getRolesTest(){
+        List<String> roles = roleMapper.selectRole();
+        assertNotNull(roles);
+        for(String role : roles){
+            System.out.println(role);
         }
     }
 }

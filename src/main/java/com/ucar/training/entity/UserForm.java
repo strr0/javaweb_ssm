@@ -9,10 +9,10 @@ public class UserForm {
     private String confirmpwd;
     private String[] likes;
     private String tag;
-    private int admin;  // 0为普通用户 1为管理员
+    private String usertype;
 
     public UserForm(){}
-    public UserForm(int id, String username, String sex, int age, String password, String confirmpwd, String likes[], String tag, int admin){
+    public UserForm(int id, String username, String sex, int age, String password, String confirmpwd, String likes[], String tag, String usertype){
         this.id = id;
         this.username = username;
         this.sex = sex;
@@ -21,10 +21,10 @@ public class UserForm {
         this.confirmpwd = confirmpwd;
         this.likes = likes;
         this.tag = tag;
-        this.admin = admin;
+        this.usertype = usertype;
     }
-    public UserForm(String username, String sex, int age, String password, String confirmpwd, String[] likes, String tag, int admin){
-        this(-1, username, sex, age, password, confirmpwd, likes, tag, admin);
+    public UserForm(String username, String sex, int age, String password, String confirmpwd, String[] likes, String tag, String usertype){
+        this(-1, username, sex, age, password, confirmpwd, likes, tag, usertype);
     }
 
     public String likesToLIKES(){
@@ -40,6 +40,10 @@ public class UserForm {
 
     public User userFromToUser(){
         String LIKES = likesToLIKES();
+        int admin = 0;
+        if(usertype.equals("admin")){
+            admin = 1;
+        }
         return new User(username, sex, age, password, LIKES, tag, admin);
     }
 
@@ -90,7 +94,7 @@ public class UserForm {
         return tag;
     }
 
-    public int getAdmin() {
-        return admin;
+    public String getUsertype() {
+        return usertype;
     }
 }

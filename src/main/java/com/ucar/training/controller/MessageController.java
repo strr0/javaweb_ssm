@@ -33,7 +33,7 @@ public class MessageController {
             return "redirect:messages";
         }
     }
-    @RequestMapping(value = "deletemessage", method = GET)
+    @RequestMapping(value = "deletemessage", method = POST)
     public String deleteMessage(int id){
         service.deleteMessage(id);
         return "redirect:messages";

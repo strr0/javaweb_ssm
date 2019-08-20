@@ -5,7 +5,8 @@
   Time: 9:00
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <%--<meta charset="utf-8">
@@ -17,18 +18,15 @@
 <%--<div class="box">--%>
     <div class="blank"></div>
     <div style="float: right; margin-right: 10px;"><a href="main">返回</a></div>
-    <form method="post" id="register_form" onsubmit="return formCheck()">
+    <form id="register_form">
         <div class="input_item">
-            <font size="5" id="admin">注册用户</font>
-            <button onclick="adminChange()">切换</button>
-            <input type="hidden" id="adminValue" name="admin" value="0" />
+            <font size="5">注册用户</font>
         </div>
         <div class="input_item">
             <div class="input_field">用户名：</div>
             <div class="input_field"><input type="text" id="name" name="username" onblur="isName(this.value)" placeholder="请输入用户名" autocomplete="off" /></div>
             <div class="input_error" id="name_error"></div>
         </div>
-
         <div class="input_item">
             <div class="input_field">性别：</div>
             <div class="input_field">
@@ -52,7 +50,6 @@
             <div class="input_field"><input type="password" id="comfirm_pwd" name="comfirmpwd" onblur="isComfirmPWD(this.value)" placeholder="请确认密码" autocomplete="off" /></div>
             <div class="input_error" id="comfirm_pwd_error"></div>
         </div>
-
         <div class="input_item">
             <div class="input_field">爱好：</div>
             <div class="input_field">
@@ -69,11 +66,28 @@
             <div class="input_error" id="tag_error"></div>
         </div>
         <div class="input_item">
+            <div class="input_field">用户类型：</div>
             <div class="input_field">
-                <input type="submit" class="bt1" value="注册" />
+                <c:set var="roles" value="${rolesKey}"></c:set>
+                <c:if test="${!empty roles}" var="flag">
+                    <select form="register_form" name="usertype">
+                        <c:forEach var="role" items="${roles}">
+                            <option value="${role}">${role}</option>
+                        </c:forEach>
+                    </select>
+                </c:if>
+                <c:if test="${not flag}">
+                    空类型
+                </c:if>
+            </div>
+            <div class="input_error"></div>
+        </div>
+        <div class="input_item">
+            <div class="input_field">
+                <input type="button" class="bt1" value="注册" onclick="insertUser()" />
             </div>
             <div class="input_field">
-                <input type="button" class="bt1" onclick="window.location.href='login'" value="取消" />
+                <input type="button" class="bt1" onclick="" value="取消" />
             </div>
         </div>
     </form>

@@ -38,7 +38,7 @@
                     </div>
                     <c:if test="${!empty admin}">
                         <div style="float: left;">
-                            <button class="bt_delete" onclick="location.href='deletemessage?id=${message.mId}'">删除</button>
+                            <button class="bt_delete" onclick="deleteMessage('${message.mId}')">删除</button>
                         </div>
                     </c:if>
                 </div>
@@ -49,9 +49,9 @@
         </c:if>
         <div class="blank"></div>
         <div>
-            <form action="addmessage" method="post" id="messages">
-                <textarea form="messages" name="data"></textarea>
-                <input type="submit" value="提交">
+            <form>
+                <textarea id="message_data"></textarea>
+                <input type="button" value="提交" onclick="postMessage()">
             </form>
         </div>
     </div>

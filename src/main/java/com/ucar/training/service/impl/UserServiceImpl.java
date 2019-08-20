@@ -2,6 +2,7 @@ package com.ucar.training.service.impl;
 
 import com.ucar.training.entity.User;
 import com.ucar.training.entity.UserForm;
+import com.ucar.training.mapper.RoleMapper;
 import com.ucar.training.mapper.UserMapper;
 import com.ucar.training.mapper.UserRolePermissionMapper;
 import com.ucar.training.service.UserService;
@@ -16,6 +17,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Resource
     private UserRolePermissionMapper urpMapper;
+    @Resource
+    private RoleMapper roleMapper;
 
     public boolean addUser(User user){
         if(user != null){
@@ -77,5 +80,8 @@ public class UserServiceImpl implements UserService {
         else{
             return null;
         }
+    }
+    public List<String> getRoles(){
+        return roleMapper.selectRole();
     }
 }

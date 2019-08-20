@@ -15,11 +15,22 @@
 <body>
     <div class="main_wrap">
         <c:set var="username" value="${sessionScope.nameKey}"></c:set>
+        <c:set var="permisions" value="${sessionScope.permissionsKey}"></c:set>
         <c:if test="${!empty username}" var="flag">
             <div class="main_label" id="label">
-                <div class="label_select"><div onclick="insertPage('profile')">用户信息</div></div>
-                <div class="label_select"><div onclick="insertPage('messages')">留言板</div></div>
-                <div class="label_select"><div onclick="insertPage('users')">所有用户</div></div>
+                <c:if test="${!empty permisions}">
+                    <c:forEach var="priv" items="${permisions}">
+                        <c:if test="${priv eq 'profile_priv'}">
+                            <div class="label_select"><div onclick="insertPage('profile')">用户信息</div></div>
+                        </c:if>
+                        <c:if test="${priv eq 'message_priv'}">
+                            <div class="label_select"><div onclick="insertPage('messages')">留言板</div></div>
+                        </c:if>
+                        <c:if test="${priv eq 'edituser_priv'}">
+                            <div class="label_select"><div onclick="insertPage('users')">所有用户</div></div>
+                        </c:if>
+                    </c:forEach>
+                </c:if>
             </div>
         </c:if>
         <c:if test="${not flag}">
@@ -48,6 +59,7 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript" src="resources/js/jquery-3.4.1.js"></script>
     <script type="text/javascript" src="resources/js/script.js"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 /* 注册部分 */
 
 /* 管理员注册 */
-function adminChange(){
+/*function adminChange(){
     var admin = document.getElementById("adminValue");
     var item = document.getElementById("admin");
     if(admin.value == 0){
@@ -12,7 +12,7 @@ function adminChange(){
         admin.value = 0;
         item.innerHTML = "注册用户";
     }
-}
+}*/
 /* 判断用户名 */
 function isName(value){
     var item = document.getElementById("name_error");
@@ -38,7 +38,7 @@ function isName(value){
 }
 /* 判断用户名是否存在 AJAX代码 */
 function isExistName(value, item) {
-    var xmlhttp;
+    /*var xmlhttp;
     if(window.XMLHttpRequest){
         xmlhttp = new XMLHttpRequest();
     }
@@ -61,7 +61,7 @@ function isExistName(value, item) {
         }
     }
     xmlhttp.open("GET", "AjaxServlet?name=" + value, true);
-    xmlhttp.send();
+    xmlhttp.send();*/
     //return true;
 }
 /* 判断真实姓名 */
@@ -293,6 +293,7 @@ function resetLabel(){
 }
 
 /* 插入页面 */
+/* GET方式获取页面 */
 function insertPage(url){
     var xmlhttp;
     if(window.XMLHttpRequest){
@@ -309,7 +310,8 @@ function insertPage(url){
     xmlhttp.open("GET", url, true);
     xmlhttp.send();
 }
-/*function insertLoginPage(){
+/* POST方式获取页面 */
+function postData(url, data){
     var xmlhttp;
     if(window.XMLHttpRequest){
         xmlhttp = new XMLHttpRequest();
@@ -322,70 +324,40 @@ function insertPage(url){
             document.getElementById("demo").innerHTML = xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET", "login", true);
-    xmlhttp.send();
+    xmlhttp.open("POST",url);
+    xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(data);
 }
-function insertRegisterPage(){
-    var xmlhttp;
-    if(window.XMLHttpRequest){
-        xmlhttp = new XMLHttpRequest();
-    }
-    else{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            document.getElementById("demo").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "register", true);
-    xmlhttp.send();
+/* 提交留言 */
+function postMessage(){
+    var data = document.getElementById("message_data").value;
+    postData("addmessage", "data=" + data);
 }
-function insertProfilePage(){
-    var xmlhttp;
-    if(window.XMLHttpRequest){
-        xmlhttp = new XMLHttpRequest();
-    }
-    else{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            document.getElementById("demo").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "profile", true);
-    xmlhttp.send();
+/* 删除留言 */
+function deleteMessage(id){
+    postData("deletemessage", "id=" + id);
 }
-function insertUsersPage(){
-    var xmlhttp;
-    if(window.XMLHttpRequest){
-        xmlhttp = new XMLHttpRequest();
-    }
-    else{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            document.getElementById("demo").innerHTML = xmlhttp.responseText;
-        }
-    }
-    xmlhttp.open("GET", "users", true);
-    xmlhttp.send();
+/* 更新用户信息 */
+function updateUser(id) {
+    insertPage("updateuser?id=" + id);
 }
-function insertMessagePage(){
-    var xmlhttp;
-    if(window.XMLHttpRequest){
-        xmlhttp = new XMLHttpRequest();
-    }
-    else{
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function () {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+/* 删除用户 */
+function deleteUser(id){
+    postData("deleteuser", "id=" + id);
+}
+/* 注册用户 */
+function insertUser(){
+    $.ajax({
+        type: "POST",
+        url: "register",
+        data: $('#register_form').serializeArray(),
+        success: function(result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            alert("注册成功!");
+            $(location).attr('href', 'main')
+        },
+        error : function() {
+            alert("异常!");
         }
-    }
-    xmlhttp.open("GET", "messages", true);
-    xmlhttp.send();
-}*/
+    });
+}

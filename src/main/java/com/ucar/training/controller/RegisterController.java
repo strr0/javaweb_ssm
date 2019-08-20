@@ -5,6 +5,7 @@ import com.ucar.training.entity.UserForm;
 import com.ucar.training.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -14,7 +15,8 @@ public class RegisterController {
     private UserServiceImpl service;
 
     @RequestMapping(value = "/register", method = GET)
-    public String getRegisterForm(){
+    public String getRegisterForm(Model model){
+        model.addAttribute("rolesKey", service.getRoles());
         return "user/register";
     }
 

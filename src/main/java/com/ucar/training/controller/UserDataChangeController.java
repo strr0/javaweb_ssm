@@ -14,9 +14,9 @@ public class UserDataChangeController {
     @Autowired
     private UserServiceImpl service;
 
-    @RequestMapping("/deleteuser")
-    public String deleteUser(int idDelete, Model model){
-        if(service.deleteUser(idDelete)){
+    @RequestMapping(value = "/deleteuser", method = POST)
+    public String deleteUser(int id, Model model){
+        if(service.deleteUser(id)){
             model.addAttribute("usersKey", service.getUsers());
             return "admin/users";
         }
@@ -26,11 +26,11 @@ public class UserDataChangeController {
     }
 
     @RequestMapping(value = "/updateuser", method = GET)
-    public String getUpdateUserForm(int idChange, Model model){
-        model.addAttribute("userKey", service.getUserById(idChange));
+    public String getUpdateUserForm(int id, Model model){
+        model.addAttribute("userKey", service.getUserById(id));
         return "admin/datachange";
     }
-    @RequestMapping(value = "updateuser", method = POST)
+    @RequestMapping(value = "/updateuser", method = POST)
     public String updateUser(UserForm userForm, Model model){
         if(service.updateUser(userForm)){
             model.addAttribute("usersKey", service.getUsers());
