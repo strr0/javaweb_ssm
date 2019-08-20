@@ -9,11 +9,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+    <%--<title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />--%>
 </head>
 <body>
-<div class="box">
+<%--<div class="box">--%>
     <div class="blank"></div>
     <div class="home_bt"><a href="home">返回</a></div>
     <form action="login" method="post">
@@ -22,7 +22,7 @@
         </div>
         <div class="input_item">
             <div class="input_field">用户名: </div>
-            <div class="input_field"><input type="text" id="login_name" name="name" /></div>
+            <div class="input_field"><input type="text" id="login_name" name="username" /></div>
         </div>
         <div class="input_item">
             <div class="input_field">密码: </div>
@@ -37,11 +37,11 @@
         </div>
         <div class="input_item">
             <div class="input_field"><input type="submit" class="bt1" value="登录" /></div>
-            <div class="input_field"><input type="button" class="bt1" value="取消" onclick="location.href='LoginServlet'" /></div>
+            <div class="input_field"><input type="button" class="bt1" value="取消" onclick="location.href='login'" /></div>
         </div>
     </form>
     <div class="blank"></div>
-</div>
+<%--</div>--%>
 
 </body>
 </html>
