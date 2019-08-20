@@ -2,7 +2,7 @@ package com.ucar.training.entity;
 
 public class UserForm {
     private int id;
-    private String name;
+    private String username;
     private String sex;
     private int age;
     private String password;
@@ -12,9 +12,9 @@ public class UserForm {
     private int admin;  // 0为普通用户 1为管理员
 
     public UserForm(){}
-    public UserForm(int id, String name, String sex, int age, String password, String confirmpwd, String likes[], String tag, int admin){
+    public UserForm(int id, String username, String sex, int age, String password, String confirmpwd, String likes[], String tag, int admin){
         this.id = id;
-        this.name = name;
+        this.username = username;
         this.sex = sex;
         this.age = age;
         this.password = password;
@@ -23,8 +23,8 @@ public class UserForm {
         this.tag = tag;
         this.admin = admin;
     }
-    public UserForm(String name, String sex, int age, String password, String confirmpwd, String[] likes, String tag, int admin){
-        this(-1, name, sex, age, password, confirmpwd, likes, tag, admin);
+    public UserForm(String username, String sex, int age, String password, String confirmpwd, String[] likes, String tag, int admin){
+        this(-1, username, sex, age, password, confirmpwd, likes, tag, admin);
     }
 
     public String likesToLIKES(){
@@ -40,18 +40,18 @@ public class UserForm {
 
     public User userFromToUser(){
         String LIKES = likesToLIKES();
-        return new User(name, sex, age, password, LIKES, tag, admin);
+        return new User(username, sex, age, password, LIKES, tag, admin);
     }
 
     public int getId() {
         return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
     public void setSex(String sex) {
         this.sex = sex;
