@@ -274,3 +274,70 @@ function changeCheck() {
 /* 登录部分 */
 
 /* 登录部分完毕 */
+
+/* 导航栏代码 */
+function getLabel(id){
+    return document.getElementById(id).getElementsByClassName("label_select");
+}
+for(var i = 0; i < getLabel("label").length; i++){
+    getLabel("label")[i].onclick = function(){
+        resetLabel();
+        this.style.background = "#AAAACC";
+    }
+}
+function resetLabel(){
+    for(var i = 0; i < getLabel("label").length; i++)
+    {
+        getLabel("label")[i].style.background = '';
+    }
+}
+
+/* 插入页面 */
+function insertLoginPage(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "login", true);
+    xmlhttp.send();
+}
+function insertRegisterPage(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "register", true);
+    xmlhttp.send();
+}
+function insertMessagePage(){
+    var xmlhttp;
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
+    }
+    else{
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange = function () {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+            document.getElementById("demo").innerHTML = xmlhttp.responseText;
+        }
+    }
+    xmlhttp.open("GET", "messages", true);
+    xmlhttp.send();
+}
