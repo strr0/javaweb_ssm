@@ -27,7 +27,7 @@
             <div class="input_item">
                 <div class="input_field">用户名: </div>
                 <div class="input_field">
-                    <input type="text" name="name" value="${user.name}" readonly />
+                    <input type="text" name="username" value="${user.username}" readonly />
                 </div>
             </div>
             <div class="input_item">
