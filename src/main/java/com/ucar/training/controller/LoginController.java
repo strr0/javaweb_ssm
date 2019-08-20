@@ -18,8 +18,8 @@ public class LoginController {
 
     @RequestMapping(value = "/login", method = GET)
     public String getLoginForm(HttpSession session, Model model){
-        String name = (String) session.getAttribute("nameKey");
-        if(name == null){
+        String username = (String) session.getAttribute("nameKey");
+        if(username == null){
             return "user/login";
         }
         else{
@@ -28,26 +28,25 @@ public class LoginController {
                 return "admin/users";
             }
             else{
-                model.addAttribute("userKey", service.getUserByName(name));
+                model.addAttribute("userKey", service.getUserByName(username));
                 return "user/profile";
             }
         }
     }
 
     @RequestMapping(value = "/login", method = POST)
-    public String login(String name, String password,HttpSession session, Model model){
-        User user = service.matchUser(name, password);
+    public String login(String username, String password,HttpSession session, Model model){
+        User user = service.matchUser(username, password);
         if(user != null){
-            session.setAttribute("nameKey", user.getName());
+            session.setAttribute("nameKey", user.getUsername());
             if(user.getAdmin() == 1){
                 model.addAttribute("usersKey", service.getUsers());
                 session.setAttribute("admin", 1);
-                return "admin/users";
             }
             else{
                 model.addAttribute("userKey", user);
-                return "user/profile";
             }
+            return "wrap/main";
         }
         else{
             model.addAttribute("message", "用户名或密码错误");
