@@ -1,5 +1,6 @@
 package com.ucar.training.service.impl;
 
+import com.ucar.training.entity.Permission;
 import com.ucar.training.entity.User;
 import com.ucar.training.entity.UserForm;
 import com.ucar.training.mapper.RoleMapper;
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService {
         return userMapper.matchUser(username, password);
     }
 
-    public List<String> getPermissions(String username){
+    public List<Permission> getPermissions(String username){
         if(username != null){
             return urpMapper.getPermissions(username);
         }
