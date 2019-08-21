@@ -5,12 +5,13 @@ drop table if exists permission;
 create table permission(
 id int primary key auto_increment,
 name varchar(20) not null,
-description varchar(20) not null
+description varchar(20) not null,
+url varchar(20) not null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 插入数据 --
-insert into permission(name, description)
-values("profile_priv", "个人信息权限"),
-("message_priv", "留言权限"),
-("edituser_priv", "修改用户信息权限"),
-("editmessage_priv", "修改留言信息权限");
+insert into permission(name, description, url)
+values("profile_priv", "个人信息", "profile"),
+("message_priv", "留言板", "messages"),
+("edituser_priv", "所有用户", "users"),
+("role_priv", "角色管理", "role");
