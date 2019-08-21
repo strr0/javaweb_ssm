@@ -3,8 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ucar.training.mapper.UserRolePermissionMapper">
+    <!-- 获取用户权限 -->
     <select id="getPermissions" parameterType="string" resultType="string">
         select permission_name from user_role a, role_permission b
         where a.role_name = b.role_name and a.user_name = #{username}
     </select>
+    <!-- 插入用户对应角色 -->
+    <insert id="insertUserRole">
+        insert into user_role(user_name, role_name)
+        values(#{arg0}, #{arg1})
+    </insert>
+    <!-- 修改用户类型 -->
+    <update id="updateUserRole">
+        update user_role set role_name = #{arg0} where user_name = #{arg1}
+    </update>
 </mapper>
