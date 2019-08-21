@@ -65,7 +65,9 @@ public class User {
     public String getTag() {
         return tag;
     }
-
+    public void setAdmin(int admin) {
+        this.admin = admin;
+    }
     public int getAdmin() {
         return admin;
     }
