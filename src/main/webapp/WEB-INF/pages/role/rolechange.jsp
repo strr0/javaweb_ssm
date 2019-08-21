@@ -24,22 +24,17 @@
             <div class="input_field"><input type="text" id="name" name="name" value="${roleKey.name}" readonly /></div>
             <div class="input_error" id="name_error"></div>
         </div>
+        <%-- permissions为用户所拥有的权限 --%>
         <c:set var="permissions" value="${roleKey.permissions}"></c:set>
         <div class="input_item">
             <div class="input_field">角色权限：</div>
             <div class="input_field">
-                <div>
-                    个人信息<input type="checkbox" name="permissions" onchange="isPermission()" value="profile_priv" ${permissions.contains('个人信息') ? 'checked' : ''} />
-                </div>
-                <div>
-                    所有用户<input type="checkbox" name="permissions" onchange="isPermission()" value="edituser_priv" ${permissions.contains('所有用户') ? 'checked' : ''} />
-                </div>
-                <div>
-                    留言板<input type="checkbox" name="permissions" onchange="isPermission()" value="message_priv" ${permissions.contains('留言板') ? 'checked' : ''} />
-                </div>
-                <div>
-                    角色管理<input type="checkbox" name="permissions" onchange="isPermission()" value="role_priv" ${permissions.contains('角色管理') ? 'checked' : ''} />
-                </div>
+                <%-- permission为数据库中某一个权限 --%>
+                <c:forEach var="permission" items="${permissionKey}">
+                    <div>
+                        ${permission.description}<input type="checkbox" name="permissions" onchange="isPermission()" value="${permission.name}" ${permissions.contains(permission.description) ? 'checked' : ''} />
+                    </div>
+                </c:forEach>
             </div>
             <div class="input_error" id="permission_error"></div>
         </div>

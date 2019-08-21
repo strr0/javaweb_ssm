@@ -1,6 +1,7 @@
 package com.ucar.training.controller;
 
 import com.ucar.training.entity.Role;
+import com.ucar.training.service.impl.PermissionServiceImpl;
 import com.ucar.training.service.impl.RoleServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,15 +13,19 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 public class RoleController {
     @Autowired
     private RoleServiceImpl service;
+    @Autowired
+    private PermissionServiceImpl permissionService;
 
     @RequestMapping("/role")
     public String getRoles(Model model){
         model.addAttribute("roles", service.getRoles());
+        model.addAttribute("permissionKey", permissionService.getPermissions());
         return "role/role";
     }
 
     @RequestMapping(value = "/roleadd", method = GET)
-    public String getRoleForm(){
+    public String getRoleForm(Model model){
+        model.addAttribute("permissionKey", permissionService.getPermissions());
         return "role/roleadd";
     }
 
@@ -33,6 +38,7 @@ public class RoleController {
     @RequestMapping(value = "/rolechange", method = GET)
     public String getChangeForm(String name, Model model){
         model.addAttribute("roleKey", service.getRole(name));
+        model.addAttribute("permissionKey", permissionService.getPermissions());
         return "role/rolechange";
     }
     @RequestMapping(value = "rolechange", method = POST)

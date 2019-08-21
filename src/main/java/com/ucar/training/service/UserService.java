@@ -15,5 +15,5 @@ public interface UserService {
     User getUserById(int id);
     User matchUser(String username, String password);
     List<Permission> getPermissions(String username);
-    List<String> getRoles();
+    List<String> getRoles();  //获取所有角色名
 }

@@ -3,7 +3,6 @@ package com.ucar.training.service.impl;
 import com.ucar.training.entity.Message;
 import com.ucar.training.mapper.MessageMapper;
 import com.ucar.training.service.MessageService;
-import com.ucar.training.service.UserService;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;

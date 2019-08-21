@@ -10,7 +10,7 @@ role_name varchar(20) not null
 
 -- 插入初始化数据 --
 insert into user_role(user_name, role_name)
-values("JavaProgrammer", "consumer"),
-("PythonProgrammer", "consumer"),
+values("Java", "consumer"),
+("Python", "consumer"),
 ("小萌新", "consumer"),
 ("root", "admin");

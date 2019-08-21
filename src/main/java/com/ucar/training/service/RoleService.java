@@ -11,7 +11,7 @@ public interface RoleService {
     void deleteRole(String name);
     //更新角色
     void updateRole(Role role);
-    //获取所有角色
+    //获取所有角色以及权限
     List<Role> getRoles();
     //获取角色
     Role getRole(String name);
