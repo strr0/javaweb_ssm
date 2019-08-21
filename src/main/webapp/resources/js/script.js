@@ -326,7 +326,7 @@ function postData(url, data){
             document.getElementById("demo").innerHTML = xmlhttp.responseText;
         }
     }
-    xmlhttp.open("POST",url);
+    xmlhttp.open("POST", url);
     xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     xmlhttp.send(data);
 }
@@ -387,5 +387,75 @@ function updateUser(){
 function changeUser(){
     if(changeCheck()){
         updateUser();
+    }
+}
+
+/* 角色管理 */
+function isRoleName(value){
+    var item = document.getElementById("name_error");
+    item.style.color = "red";
+    if(value == ""){
+        item.innerHTML = "角色名不能为空";
+    }
+    else if(value.length > 10 || value.length < 2){
+        item.innerHTML = "长度必须为2-10位";
+    }
+    else{
+        item.style.color = "green";
+        item.innerHTML = "ok!";
+        return true;
+    }
+    return false;
+}
+function isPermission(){
+    var value = document.getElementsByName("permissions");
+    var item = document.getElementById("permission_error");
+    for(var i = 0; i < value.length; i++){
+        if(value[i].checked){
+            item.style.color = "green";
+            item.innerHTML = "ok!";
+            return true;
+        }
+    }
+    item.style.color = "red";
+    item.innerHTML = "请选择权限";
+    return false;
+}
+function roleFormCheck() {
+    var test1 = isRoleName(document.getElementById("name").value);
+    var test2 = isPermission();
+    return (test1 && test2);
+}
+function ajaxPostData(url, form_id){
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: $(form_id).serializeArray(),
+        success: function(result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            alert("修改成功!");
+            $(location).attr('href', 'main')
+        },
+        error : function() {
+            alert("异常!");
+        }
+    });
+}
+function roleAdd() {
+    if(roleFormCheck()){
+        ajaxPostData("roleadd", "#role_form");
+    }
+}
+/* 删除角色 */
+function toDeleteRole(name){
+    postData("roledelete", "name=" + name);
+}
+/* 修改角色 */
+function toUpdateRole(name){
+    insertPage("rolechange?name=" + name);
+}
+function upDateRole(){
+    if(roleFormCheck()){
+        ajaxPostData("rolechange", "#role_form");
     }
 }
