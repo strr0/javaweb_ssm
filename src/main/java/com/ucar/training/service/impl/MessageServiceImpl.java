@@ -10,8 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Component
-public class MessageServiceImpl implements MessageService
-{
+public class MessageServiceImpl implements MessageService {
     @Resource
     private MessageMapper mapper;
 
