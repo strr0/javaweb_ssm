@@ -93,7 +93,9 @@ public class UserForm {
     public String getTag() {
         return tag;
     }
-
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
     public String getUsertype() {
         return usertype;
     }
