@@ -1,6 +1,5 @@
 package com.ucar.training.controller;
 
-import com.ucar.training.entity.User;
 import com.ucar.training.entity.UserForm;
 import com.ucar.training.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,7 @@ public class RegisterController {
             return "status/fail";
         }
         else{
-            User user = userForm.userFromToUser();
-            if(service.addUser(user)){
+            if(service.addUser(userForm)){
                 return "status/success";
             }
             else{
