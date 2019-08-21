@@ -2,6 +2,7 @@ package com.ucar.training.test;
 
 
 import com.ucar.training.config.DataConfig;
+import com.ucar.training.entity.Permission;
 import com.ucar.training.mapper.RoleMapper;
 import com.ucar.training.mapper.UserRolePermissionMapper;
 import org.junit.Assert;
@@ -25,11 +26,12 @@ public class UserRolePermissionTest {
     @Test
     public void getPermissionTest(){
         Assert.assertNotNull(mapper);
-        List<String> permissions = mapper.getPermissions("222");
+        List<Permission> permissions = mapper.getPermissions("root");
         Assert.assertNotNull(permissions);
 
-        for(String permission : permissions){
-            System.out.println(permission);
+        for(Permission permission : permissions){
+            System.out.println(permission.getDescription());
+            System.out.println(permission.getUrl());
         }
     }
 
@@ -45,5 +47,14 @@ public class UserRolePermissionTest {
     @Test
     public void addUserRoleTest(){
         mapper.insertUserRole("222", "consumer");
+    }
+
+    @Test
+    public void selectRolePermission(){
+        List<String> permissions = mapper.selectRolePermission("admin");
+        Assert.assertNotNull(permissions);
+        for(String permission : permissions){
+            System.out.println(permission);
+        }
     }
 }
