@@ -142,8 +142,8 @@ function isPassword(value){
     return false;
 }
 /* 判断确认密码 */
-function isComfirmPWD(value){
-    var item_cf = document.getElementById("comfirm_pwd_error");
+function isConfirmPWD(value){
+    var item_cf = document.getElementById("confirm_pwd_error");
     item_cf.style.color = "red";
     var item_pwd = document.getElementById("password_error");
     item_pwd.style.color = "red";
@@ -255,7 +255,7 @@ function formCheck(){
     var test3 = isSex();
     var test4 = isAge(document.getElementById("age").value);
     var test5 = isPassword(document.getElementById("pwd").value);
-    var test6 = isComfirmPWD(document.getElementById("comfirm_pwd").value);
+    var test6 = isConfirmPWD(document.getElementById("confirm_pwd").value);
     //var test7 = isTel(document.getElementById("tel").value);
     //var test8 = isEmail(document.getElementById("email").value);
     var test9 = isLike();
@@ -264,9 +264,11 @@ function formCheck(){
 }
 function changeCheck() {
     var test4 = isAge(document.getElementById("age").value);
+    var test5 = isPassword(document.getElementById("pwd").value);
+    var test6 = isConfirmPWD(document.getElementById("confirm_pwd").value);
     var test9 = isLike();
     var test10 = isTag(document.getElementById("tag").value);
-    return (test4 && test9 && test10);
+    return (test4 && test5 && test6 && test9 && test10);
 }
 
 /* 注册部分完毕 */
@@ -338,11 +340,11 @@ function deleteMessage(id){
     postData("deletemessage", "id=" + id);
 }
 /* 更新用户信息 */
-function updateUser(id) {
+function toUpdateUser(id) {
     insertPage("updateuser?id=" + id);
 }
 /* 删除用户 */
-function deleteUser(id){
+function toDeleteUser(id){
     postData("deleteuser", "id=" + id);
 }
 /* 注册用户 */
@@ -360,4 +362,30 @@ function insertUser(){
             alert("异常!");
         }
     });
+}
+function addUser(){
+    if(formCheck()){
+        insertUser();
+    }
+}
+/* 修改用户 */
+function updateUser(){
+    $.ajax({
+        type: "POST",
+        url: "updateuser",
+        data: $('#change_form').serializeArray(),
+        success: function(result) {
+            console.log(result);//打印服务端返回的数据(调试用)
+            alert("修改成功!");
+            $(location).attr('href', 'main')
+        },
+        error : function() {
+            alert("异常!");
+        }
+    });
+}
+function changeUser(){
+    if(changeCheck()){
+        updateUser();
+    }
 }
