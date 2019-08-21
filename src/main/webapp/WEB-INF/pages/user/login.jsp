@@ -37,7 +37,7 @@
         </div>
         <div class="input_item">
             <div class="input_field"><input type="submit" class="bt1" value="登录" /></div>
-            <div class="input_field"><input type="button" class="bt1" value="取消" onclick="location.href='login'" /></div>
+            <div class="input_field"><input type="button" class="bt1" value="取消" onclick="" /></div>
         </div>
     </form>
     <div class="blank"></div>
