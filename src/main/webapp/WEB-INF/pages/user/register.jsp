@@ -30,8 +30,8 @@
         <div class="input_item">
             <div class="input_field">性别：</div>
             <div class="input_field">
-                <input type="radio" id="sex" name="sex" value="男" onchange="isSex()">男</input>
-                <input type="radio" id="sex" name="sex" value="女" onchange="isSex()">女</input>
+                <input type="radio" name="sex" value="男" onchange="isSex()">男</input>
+                <input type="radio" name="sex" value="女" onchange="isSex()">女</input>
             </div>
             <div class="input_error" id="sex_error"></div>
         </div>
@@ -47,8 +47,8 @@
         </div>
         <div class="input_item">
             <div class="input_field">确认密码：</div>
-            <div class="input_field"><input type="password" id="comfirm_pwd" name="comfirmpwd" onblur="isComfirmPWD(this.value)" placeholder="请确认密码" autocomplete="off" /></div>
-            <div class="input_error" id="comfirm_pwd_error"></div>
+            <div class="input_field"><input type="password" id="confirm_pwd" name="confirmpwd" onblur="isConfirmPWD(this.value)" placeholder="请确认密码" autocomplete="off" /></div>
+            <div class="input_error" id="confirm_pwd_error"></div>
         </div>
         <div class="input_item">
             <div class="input_field">爱好：</div>
@@ -84,7 +84,7 @@
         </div>
         <div class="input_item">
             <div class="input_field">
-                <input type="button" class="bt1" value="注册" onclick="insertUser()" />
+                <input type="button" class="bt1" value="注册" onclick="addUser()" />
             </div>
             <div class="input_field">
                 <input type="button" class="bt1" onclick="" value="取消" />
