@@ -15,4 +15,4 @@ values("consumer", "profile_priv"),
 ("admin", "profile_priv"),
 ("admin", "message_priv"),
 ("admin", "edituser_priv"),
-("admin", "editmessage_priv");
+("admin", "role_priv");
