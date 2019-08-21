@@ -9,21 +9,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />
+    <%--<title>Title</title>
+    <link rel="stylesheet" type="text/css" href="resources/css/style.css" />--%>
 </head>
 <body>
-<div class="box">
+<%--<div class="box">--%>
     <c:set var="user" value="${userKey}"></c:set>
     <div class="blank"></div>
-    <div class="home_bt"><a href="home">返回</a></div>
-    <form action="updateuser" method="post" id="change_form" onsubmit="return changeCheck()">
+    <div class="home_bt"><a href="main">返回</a></div>
+    <form id="change_form" onsubmit="return changeCheck()">
         <div class="input_item">
             <font size="5">修改信息</font>
         </div>
         <c:if test="${!empty user}">
             <input type="hidden" name="id" value="${user.id}"/>
-            <input type="hidden" name="admin" value="${user.admin}">
             <div class="input_item">
                 <div class="input_field">用户名: </div>
                 <div class="input_field">
@@ -33,8 +32,8 @@
             <div class="input_item">
                 <div class="input_field">性别: </div>
                 <div class="input_field">
-                    <input type="radio" id="sex" name="sex" value="男" ${user.sex.contains("男")?"checked":""}>男</input>
-                    <input type="radio" id="sex" name="sex" value="女" ${user.sex.contains("女")?"checked":""}>女</input>
+                    <input type="radio" name="sex" value="男" ${user.sex.contains("男")?"checked":""}>男</input>
+                    <input type="radio" name="sex" value="女" ${user.sex.contains("女")?"checked":""}>女</input>
                 </div>
             </div>
             <div class="input_item">
@@ -51,8 +50,8 @@
             </div>
             <div class="input_item">
                 <div class="input_field">确认密码：</div>
-                <div class="input_field"><input type="password" id="comfirm_pwd" name="comfirmpwd" onblur="isComfirmPWD(this.value)" value="${user.password}" /></div>
-                <div class="input_error" id="comfirm_pwd_error"></div>
+                <div class="input_field"><input type="password" id="confirm_pwd" name="confirmpwd" onblur="isConfirmPWD(this.value)" value="${user.password}" /></div>
+                <div class="input_error" id="confirm_pwd_error"></div>
             </div>
             <div class="input_item">
                 <div class="input_field">爱好：</div>
@@ -70,15 +69,32 @@
                 <div class="input_error" id="tag_error"></div>
             </div>
             <div class="input_item">
+                <div class="input_field">用户类型：</div>
                 <div class="input_field">
-                    <input type="submit" value="确认" />
+                    <c:set var="roles" value="${rolesKey}"></c:set>
+                    <c:if test="${!empty roles}" var="flag">
+                        <select form="change_form" name="usertype">
+                            <c:forEach var="role" items="${roles}">
+                                <option value="${role}">${role}</option>
+                            </c:forEach>
+                        </select>
+                    </c:if>
+                    <c:if test="${not flag}">
+                        空类型
+                    </c:if>
+                </div>
+                <div class="input_error"></div>
+            </div>
+            <div class="input_item">
+                <div class="input_field">
+                    <input type="button" value="确认" onclick="changeUser()" />
                 </div>
             </div>
         </c:if>
     </form>
-    <div class="blank"></div>
-</div>
-<script src="resources/js/script.js"></script>
+    <%--<div class="blank"></div>--%>
+<%--</div>--%>
+<%--<script src="resources/js/script.js"></script>--%>
 </body>
 </html>
 
