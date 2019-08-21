@@ -37,7 +37,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = POST)
-    public String login(String username, String password,HttpSession session, Model model){
+    public String login(String username, String password, HttpSession session, Model model, RedirectAttributes redirectModel){
         User user = service.matchUser(username, password);
         if(user != null){
             session.setAttribute("nameKey", username);
@@ -48,8 +48,8 @@ public class LoginController {
             return "redirect:main";
         }
         else{
-            model.addAttribute("message", "用户名或密码错误");
-            return "user/login";
+            redirectModel.addFlashAttribute("message", "用户名或密码错误");
+            return "redirect:main";
         }
     }
     @RequestMapping("/logout")
