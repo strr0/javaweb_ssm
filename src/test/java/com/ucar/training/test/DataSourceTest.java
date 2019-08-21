@@ -1,5 +1,6 @@
 package com.ucar.training.test;
 
+import static org.junit.Assert.*;
 import com.ucar.training.config.DataConfig;
 import com.ucar.training.entity.User;
 import com.ucar.training.mapper.UserMapper;
@@ -26,5 +27,12 @@ public class DataSourceTest {
         if(users != null){
             System.out.println(users.get(0).getUsername());
         }
+    }
+
+    @Test
+    public void isAdminTest(){
+        User user = mapper.matchUser("222", "123123");
+        assertNotNull(user);
+        assertEquals(user.getAdmin(), 1);
     }
 }
