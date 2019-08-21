@@ -20,19 +20,25 @@ public class UserServiceImpl implements UserService {
     @Resource
     private RoleMapper roleMapper;
 
-    public boolean addUser(User user){
-        if(user != null){
-            userMapper.insertUser(user);
+    public boolean addUser(UserForm userForm){
+        if(userForm != null){
+            urpMapper.insertUserRole(userForm.getUsername(), userForm.getUsertype());
+            userMapper.insertUser(userForm.userFromToUser());
             return true;
         }
         else{
             return false;
         }
     }
-    public boolean deleteUser(int id){
-        if(id != 0){
-            userMapper.deleteUser(id);
-            return true;
+    public boolean deleteUser(int id, String username){
+        if(id != 0 && username != null){
+            if(userMapper.getUserById(id).getUsername().equals(username)){  //删除自己
+                return false;
+            }
+            else{
+                userMapper.deleteUser(id);
+                return true;
+            }
         }
         else{
             return false;
@@ -53,7 +59,14 @@ public class UserServiceImpl implements UserService {
             if(userForm.getTag() != null){
                 user.setTag(userForm.getTag());
             }
+            if(userForm.getUsertype().equals("admin")){
+                user.setAdmin(1);
+            }
+            else{
+                user.setAdmin(0);
+            }
             userMapper.updateUser(user);
+            urpMapper.updateUserRole(userForm.getUsertype(), userForm.getUsername());
             return true;
         }
         else{
