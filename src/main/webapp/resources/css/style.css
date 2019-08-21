@@ -27,6 +27,10 @@ body{
     padding: 10px;
     background-color: #EEEEEE; /* #AAAACC */
 }
+.label_select:hover{
+    background: #AAAACC;
+    cursor: pointer;
+}
 
 .box{
     width: 550px;
