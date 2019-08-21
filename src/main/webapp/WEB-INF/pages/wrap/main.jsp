@@ -20,15 +20,7 @@
             <div class="main_label" id="label">
                 <c:if test="${!empty permisions}">
                     <c:forEach var="priv" items="${permisions}">
-                        <c:if test="${priv eq 'profile_priv'}">
-                            <div class="label_select"><div onclick="insertPage('profile')">用户信息</div></div>
-                        </c:if>
-                        <c:if test="${priv eq 'message_priv'}">
-                            <div class="label_select"><div onclick="insertPage('messages')">留言板</div></div>
-                        </c:if>
-                        <c:if test="${priv eq 'edituser_priv'}">
-                            <div class="label_select"><div onclick="insertPage('users')">所有用户</div></div>
-                        </c:if>
+                        <div class="label_select"><div onclick="insertPage('${priv.url}')">${priv.description}</div></div>
                     </c:forEach>
                 </c:if>
             </div>
