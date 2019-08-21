@@ -45,10 +45,10 @@
                         <td>
                             <div style="overflow: hidden; width: 80px;">
                                 <div style="float: left; width: 40px;">
-                                    <button class="bt_user_change" onclick="updateUser('${user.id}')">修改</button>
+                                    <button class="bt_user_change" onclick="toUpdateUser('${user.id}')">修改</button>
                                 </div>
                                 <div style="float: left; width: 40px;">
-                                    <button class="bt_user_delete" onclick="deleteUser('${user.id}')">删除</button>
+                                    <button class="bt_user_delete" onclick="toDeleteUser('${user.id}')">删除</button>
                                 </div>
                             </div>
                         </td>
@@ -58,6 +58,9 @@
         </c:if>
         <c:if test="${not flag}">
             暂无用户注册
+        </c:if>
+        <c:if test="${!empty message}">
+            ${message}
         </c:if>
     </div>
 <%--    <div style="margin-left: 10px;"><a href="messages">留言板</a></div>
