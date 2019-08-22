@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-    <h2>home!</h2>
+    <center><h2>暂未开放</h2></center>
 </body>
 </html>
