@@ -3,7 +3,28 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ucar.training.mapper.PermissionMapper">
+    <!-- 插入权限信息 -->
+    <insert id="insertPermission" parameterType="com.ucar.training.entity.Permission">
+        insert into permission(name, description, url)
+        values(#{name}, #{description}, #{url})
+    </insert>
+    <!-- 删除权限 -->
+    <delete id="deleteRolePermission" parameterType="string">
+        delete from role_permission where permission_name = #{name}
+    </delete>
+    <delete id="deletePermission" parameterType="string">
+        delete from permission where name = #{name}
+    </delete>
+    <!-- 获取所有权限信息 -->
     <select id="selectPermission" resultType="com.ucar.training.entity.Permission">
         select name, description, url from permission
     </select>
+    <!-- 根据权限名获取权限信息 -->
+    <select id="getPermissionByName" parameterType="string" resultType="com.ucar.training.entity.Permission">
+        select name, description, url from permission where name = #{name}
+    </select>
+    <!-- 修改权限信息 -->
+    <update id="updatePermission" parameterType="com.ucar.training.entity.Permission">
+        update permission set description = #{description}, url = #{url} where name = #{name}
+    </update>
 </mapper>
