@@ -13,7 +13,20 @@ public class PermissionServiceImpl implements PermissionService {
     @Resource
     private PermissionMapper mapper;
 
+    public void addPermission(Permission permission){
+        mapper.insertPermission(permission);
+    }
+    public void deletePermission(String name){
+        mapper.deleteRolePermission(name);
+        mapper.deletePermission(name);
+    }
     public List<Permission> getPermissions(){
         return mapper.selectPermission();
+    }
+    public Permission getPermission(String name){
+        return mapper.getPermissionByName(name);
+    }
+    public void changePermission(Permission permission){
+        mapper.updatePermission(permission);
     }
 }
