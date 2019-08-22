@@ -14,4 +14,5 @@ insert into permission(name, description, url)
 values("profile_priv", "个人信息", "profile"),
 ("message_priv", "留言板", "messages"),
 ("edituser_priv", "所有用户", "users"),
-("role_priv", "角色管理", "role");
+("role_priv", "角色管理", "role"),
+("permission_priv", "权限管理", "permission");
