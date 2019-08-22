@@ -25,11 +25,11 @@
         权限列表
         <table border="1">
             <tr>
-                <th style="width: 80px;">权限名</th>
-                <th style="width: 80px;">描述</th>
-                <th style="width: 80px;">url</th>
+                <th style="width: 100px;">权限名</th>
+                <th style="width: 100px;">描述</th>
+                <th style="width: 100px;">url</th>
                 <th style="width: 80px;">
-                    <button class="bt_user_add" onclick="">添加权限</button>
+                    <button class="bt_user_add" onclick="insertPage('permissionadd')">添加权限</button>
                 </th>
             </tr>
             <c:forEach var="permission" items="${permissionKey}">
@@ -40,10 +40,10 @@
                     <td>
                         <div style="overflow: hidden; width: 80px;">
                             <div style="float: left; width: 40px;">
-                                <button class="bt_user_change" onclick="">修改</button>
+                                <button class="bt_user_change" onclick="toUpdatePermission('${permission.name}')">修改</button>
                             </div>
                             <div style="float: left; width: 40px;">
-                                <button class="bt_user_delete" onclick="">删除</button>
+                                <button class="bt_user_delete" onclick="toDeletePermission('${permission.name}')">删除</button>
                             </div>
                         </div>
                     </td>
