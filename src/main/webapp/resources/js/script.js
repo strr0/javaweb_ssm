@@ -459,3 +459,80 @@ function upDateRole(){
         ajaxPostData("rolechange", "#role_form");
     }
 }
+
+/* 权限管理 */
+function isPermissionName(value) {
+    var item = document.getElementById("name_error");
+    item.style.color = "red";
+    if(value == ""){
+        item.innerHTML = "权限名不能为空";
+    }
+    else if(value.length > 10 || value.length < 2){
+        item.innerHTML = "长度必须为2-10位";
+    }
+    else{
+        item.style.color = "green";
+        item.innerHTML = "ok!";
+        return true;
+    }
+    return false;
+}
+function isDescription(value) {
+    var item = document.getElementById("description_error");
+    item.style.color = "red";
+    if(value == ""){
+        item.innerHTML = "权限描述不能为空";
+    }
+    else if(value.length > 10 || value.length < 2){
+        item.innerHTML = "长度必须为2-10位";
+    }
+    else{
+        item.style.color = "green";
+        item.innerHTML = "ok!";
+        return true;
+    }
+    return false;
+}
+function isUrl(value) {
+    var item = document.getElementById("url_error");
+    item.style.color = "red";
+    if(value == ""){
+        item.innerHTML = "url不能为空";
+    }
+    else if(value.length > 10 || value.length < 2){
+        item.innerHTML = "长度必须为2-10位";
+    }
+    else{
+        item.style.color = "green";
+        item.innerHTML = "ok!";
+        return true;
+    }
+    return false;
+}
+/* 表单验证 */
+function permissionFormCheck() {
+    var test1 = isPermissionName(document.getElementById("name").value);
+    var test2 = isDescription(document.getElementById("description").value);
+    var test3 = isUrl(document.getElementById("url").value);
+    return (test1 && test2 && test3);
+}
+/* 表单提交 */
+function postPermissionForm() {
+    if(permissionFormCheck()){
+        ajaxPostData("permissionadd", "#permission_form");
+    }
+}
+/* 获取修改表单 */
+function toUpdatePermission(name) {
+    insertPage("permissionchange?name=" + name);
+}
+/* 修改表单提交 */
+function postChangePermissionForm() {
+    if(permissionFormCheck()){
+        ajaxPostData("permissionchange", "#change_form");
+    }
+}
+/* 删除权限 */
+function toDeletePermission(name){
+    postData("permissiondelete", "name=" + name);
+}
