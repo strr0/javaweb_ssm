@@ -10,10 +10,10 @@ permission_name varchar(20) not null
 
 -- 插入初始化数据 --
 insert into role_permission(role_name, permission_name)
-values("consumer", "profile_priv"),
-("consumer", "message_priv"),
-("admin", "profile_priv"),
-("admin", "message_priv"),
-("admin", "edituser_priv"),
-("admin", "role_priv"),
-("admin", "permission_priv");
+values('consumer', 'profile_priv'),
+('consumer', 'message_priv'),
+('admin', 'profile_priv'),
+('admin', 'message_priv'),
+('admin', 'edituser_priv'),
+('admin', 'role_priv'),
+('admin', 'permission_priv');

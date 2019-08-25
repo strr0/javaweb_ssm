@@ -11,4 +11,4 @@ m_time datetime not null
 
 -- 插入初始化数据 --
 insert into message(m_name, m_data, m_time)
-values("root", "第一条留言...", now());
+values('root', '第一条留言...', now());

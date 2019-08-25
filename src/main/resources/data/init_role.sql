@@ -10,5 +10,5 @@ description varchar(20) not null
 
 -- 插入数据 --
 insert into role(name, description)
-values("consumer", "普通用户"),
-("admin", "管理员");
+values('consumer', '普通用户'),
+('admin', '管理员');

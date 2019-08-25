@@ -6,6 +6,7 @@ import com.ucar.training.entity.User;
 import com.ucar.training.mapper.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
+@ActiveProfiles("dev")
 @ContextConfiguration(classes = DataConfig.class)
 public class DataSourceTest {
     @Resource

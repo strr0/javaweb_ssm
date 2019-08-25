@@ -35,12 +35,21 @@
       <scope>provided</scope>
     </dependency>
 
+    <!-- MySql驱动 -->
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <version>8.0.17</version>
     </dependency>
 
+    <!-- H2数据库 -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+      <version>1.4.199</version>
+    </dependency>
+
+    <!-- Spring JDBC -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
